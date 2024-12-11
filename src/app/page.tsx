@@ -31,9 +31,9 @@ export default function Home() {
   const handleRemove = () => {
     const value = Number(removeValue);
 
-    if (value >= 0 || isNaN(value)) {
-      // Verificar se o valor é negativo
-      setErrorMessage("Please enter a negative value.");
+    if (value <= 0 || isNaN(value)) {
+      // Verificar se o valor é positivo e válido
+      setErrorMessage("Please enter a positive value.");
       return;
     }
 
