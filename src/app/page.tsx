@@ -77,7 +77,7 @@ export default function Home() {
               type="number"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
-              className="flex-1 border border-gray-700 rounded-l-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="flex-1 text-gray-700 border border-gray-300 rounded-l-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             <button
               onClick={handleAdd}
@@ -95,7 +95,7 @@ export default function Home() {
               type="number"
               value={removeValue}
               onChange={(e) => setRemoveValue(e.target.value)}
-              className="flex-1 border border-gray-700 rounded-l-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-500"
+              className="flex-1 text-gray-700 border border-gray-300 rounded-l-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-500"
             />
             <button
               onClick={handleRemove}
