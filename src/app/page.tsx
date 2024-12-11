@@ -71,7 +71,7 @@ export default function Home() {
 
       <div className="w-full max-w-md bg-white shadow-md rounded-lg p-6">
         <div className="mb-4">
-          <label className="block text-gray-700 font-medium mb-2">Add Value:</label>
+          <label className="block font-medium mb-2">Add Value:</label>
           <div className="flex">
             <input
               type="number"
@@ -89,7 +89,7 @@ export default function Home() {
         </div>
 
         <div className="mb-6">
-          <label className="block text-gray-700 font-medium mb-2">Remove Value:</label>
+          <label className="block font-medium mb-2">Remove Value:</label>
           <div className="flex">
             <input
               type="number"
