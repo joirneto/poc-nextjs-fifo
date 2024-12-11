@@ -71,13 +71,13 @@ export default function Home() {
 
       <div className="w-full max-w-md bg-white shadow-md rounded-lg p-6">
         <div className="mb-4">
-          <label className="block font-medium mb-2">Add Value:</label>
+          <label className="block text-gray-700 font-medium mb-2">Add Value:</label>
           <div className="flex">
             <input
               type="number"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
-              className="flex-1 border border-gray-300 rounded-l-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="flex-1 border border-gray-700 rounded-l-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             <button
               onClick={handleAdd}
@@ -89,13 +89,13 @@ export default function Home() {
         </div>
 
         <div className="mb-6">
-          <label className="block font-medium mb-2">Remove Value:</label>
+          <label className="block text-gray-700 font-medium mb-2">Remove Value:</label>
           <div className="flex">
             <input
               type="number"
               value={removeValue}
               onChange={(e) => setRemoveValue(e.target.value)}
-              className="flex-1 border border-gray-300 rounded-l-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-500"
+              className="flex-1 border border-gray-700 rounded-l-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-500"
             />
             <button
               onClick={handleRemove}
