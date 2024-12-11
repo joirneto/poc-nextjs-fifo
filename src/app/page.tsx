@@ -30,8 +30,8 @@ export default function Home() {
         // Mensagem de erro se o valor a ser removido exceder o saldo
         setErrorMessage("Saldo insuficiente para retirada.");
       } else {
-        const amountToRemove = value;
-        let newQueue = [...queue];
+        let amountToRemove = value;
+        const newQueue = [...queue];
         const tempHistory: string[] = [];
         
         while (amountToRemove > 0 && newQueue.length > 0) {
