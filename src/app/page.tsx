@@ -28,25 +28,29 @@ export default function Home() {
 
       if (value > total) {
         // Mensagem de erro se o valor a ser removido exceder o saldo
-        setErrorMessage("Insufficient balance for withdrawal.");
+        setErrorMessage("Saldo insuficiente para retirada.");
       } else {
-        // Atualizar fila, histórico e saldo total
-        let amountToRemove = value;
+        const amountToRemove = value;
         let newQueue = [...queue];
-
+        const tempHistory: string[] = [];
+        
         while (amountToRemove > 0 && newQueue.length > 0) {
           if (amountToRemove >= newQueue[0]) {
-            amountToRemove -= newQueue[0];
-            newQueue.shift();
+            // Quando o valor a ser retirado é maior ou igual ao valor da primeira entrada
+            tempHistory.push(`-${newQueue[0]}`); // Adiciona no histórico
+            amountToRemove -= newQueue[0]; // Diminui a quantidade retirada
+            newQueue.shift(); // Remove da fila
           } else {
-            newQueue[0] -= amountToRemove;
-            amountToRemove = 0;
+            // Se o valor a ser retirado é menor que o valor da primeira entrada
+            tempHistory.push(`-${amountToRemove}`); // Adiciona no histórico
+            newQueue[0] -= amountToRemove; // Subtrai da entrada atual
+            amountToRemove = 0; // Não resta mais valor a ser retirado
           }
         }
 
         setQueue(newQueue);
-        setHistory([...history, `-${value}`]);
-        setTotal(total - value);
+        setHistory([...history, ...tempHistory]); // Atualiza o histórico com as retiradas parciais
+        setTotal(total - value); // Atualiza o saldo total
         setRemoveValue("");
         setErrorMessage(""); // Limpar mensagens de erro
       }
