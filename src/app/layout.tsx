@@ -8,8 +8,8 @@ import Navbar from '~/components/navbar.tsx'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Modern CRUD App',
-  description: 'A modern web application with CRUD functionality',
+  title: 'Pontos pra você',
+  description: 'A modern web application',
 }
 
 export default function RootLayout({
