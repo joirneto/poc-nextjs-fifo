@@ -8,7 +8,7 @@ export default function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center space-x-4">
-            <Link href="/" className="text-xl font-bold">CRUD App</Link>
+            <Link href="/" className="text-xl font-bold">PONTOSPRAVOCÊ</Link>
             <Link href="/" className="text-sm">Home</Link>
             <Link href="/about" className="text-sm">About</Link>
             <Link href="/table-management" className="text-sm">Table Management</Link>
