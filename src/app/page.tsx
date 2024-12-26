@@ -73,16 +73,15 @@ export default function Home() {
       }
     }
 
-    const somaPontos = newQueue.reduce((acc, item) => acc + item.points, 0);
-    const somaDinheiro = newQueue.reduce((acc, item) => acc + item.money, 0);
-    const media = (somaDinheiro / somaPontos) * 1000;
-
     setQueue(newQueue);
     setHistory(prevHistory => {
       return [...prevHistory, ...tempHistory];
     });
     setTotalPoints(totalPoints - pointsToRemove);
-    setTotalMoney(media);
+    if(totalPoints - pointsToRemove === 0){
+      setTotalMoney(0);
+    }
+
     setRemovePoints("");
     setRemoveMoney("");
     setErrorMessage("");
@@ -154,7 +153,7 @@ export default function Home() {
         <h3 className="text-lg font-semibold text-gray-800 mb-2">Totals:</h3>
         <div className="bg-gray-100 border border-gray-300 rounded-lg p-4 mb-6">
           <p className="text-lg text-gray-800">Points: {totalPoints}</p>
-          <p className="text-lg text-gray-800">Money: {totalMoney.toFixed(2)} (1K pontos)</p>
+          <p className="text-lg text-gray-800">Average Money: {totalMoney.toFixed(2)} for 1K points</p>
         </div>
 
         {/* History */}
