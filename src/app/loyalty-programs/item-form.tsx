@@ -19,21 +19,15 @@ import {
 import { Input } from "~/components/ui/input"
 
 import { Item } from "./columns"
-import { addItem, updateItem } from "./actions"
-import { toast } from "~/components/hooks/use-toast"
+import { updateItem } from "./actions"
+
 
 const formSchema = z.object({
   name: z.string().min(2, {
-    message: "Name must be at least 2 characters.",
+    message: "Nome do programa dever ter no mínimo 2 caracteres.",
   }),
-  category: z.string().min(2, {
-    message: "Category must be at least 2 characters.",
-  }),
-  price: z.number().min(0, {
-    message: "Price must be a positive number.",
-  }),
-  stock: z.number().int().min(0, {
-    message: "Stock must be a positive integer.",
+  identifier: z.string().min(2, {
+    message: "Identificador do programa dever ter no mínimo 2 caracteres.",
   }),
 })
 
@@ -45,9 +39,7 @@ export function ItemForm({ initialData }: { initialData?: Item }) {
     resolver: zodResolver(formSchema),
     defaultValues: initialData || {
       name: "",
-      category: "",
-      price: 0,
-      stock: 0,
+      identifier: "",
     },
   })
 
@@ -56,44 +48,41 @@ export function ItemForm({ initialData }: { initialData?: Item }) {
     try {
       if (initialData) {
         await updateItem(initialData.id, values)
-        toast({
-          title: "Item updated",
-          description: "The item has been successfully updated.",
-        })
+ 
       } else {
-        await addItem(values)
-        toast({
-          title: "Item added",
-          description: "The new item has been successfully added.",
-        })
+        await fetch(`${process.env.NEXT_PUBLIC_URL_BASE}/loyalty-programs`, {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(values)
+        }); 
+
       }
       router.push("/loyalty-programs")
       router.refresh()
     } catch (error) {
-      toast({
-        title: "Error",
-        description: "An error occurred. Please try again.",
-        variant: "destructive",
-      })
+
     } finally {
       setIsLoading(false)
     }
   }
 
   return (
-    <Form {...form}>
+      <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
           control={form.control}
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Name</FormLabel>
+              <FormLabel>Programa</FormLabel>
               <FormControl>
-                <Input placeholder="Item name" {...field} />
+                <Input placeholder="Nome do Programa" {...field} />
               </FormControl>
               <FormDescription>
-                Enter the name of the item.
+                Insira o nome do programa de pontos.
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -101,64 +90,22 @@ export function ItemForm({ initialData }: { initialData?: Item }) {
         />
         <FormField
           control={form.control}
-          name="category"
+          name="identifier"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Category</FormLabel>
+              <FormLabel>Meu identificador</FormLabel>
               <FormControl>
-                <Input placeholder="Item category" {...field} />
+                <Input placeholder="Meu identificador" {...field} />
               </FormControl>
               <FormDescription>
-                Enter the category of the item.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="price"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Price</FormLabel>
-              <FormControl>
-                <Input
-                  type="number"
-                  placeholder="Item price"
-                  {...field}
-                  onChange={(e) => field.onChange(parseFloat(e.target.value))}
-                />
-              </FormControl>
-              <FormDescription>
-                Enter the price of the item.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="stock"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Stock</FormLabel>
-              <FormControl>
-                <Input
-                  type="number"
-                  placeholder="Item stock"
-                  {...field}
-                  onChange={(e) => field.onChange(parseInt(e.target.value, 10))}
-                />
-              </FormControl>
-              <FormDescription>
-                Enter the stock quantity of the item.
+                Insira o seu identificador dentro do programa (CPF, ID, Login, etc).
               </FormDescription>
               <FormMessage />
             </FormItem>
           )}
         />
         <Button type="submit" disabled={isLoading}>
-          {isLoading ? "Saving..." : (initialData ? "Update Item" : "Add Item")}
+          {isLoading ? "Salvando..." : (initialData ? "Atualizar programa" : "Adicionar")}
         </Button>
       </form>
     </Form>

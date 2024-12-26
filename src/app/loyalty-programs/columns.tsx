@@ -9,9 +9,9 @@ import { DataTableRowActions } from "./data-table-column-row-actions"
 export type Item = {
   id: string
   name: string
-  category: string
-  price: number
-  stock: number
+  identifier: string
+  createdAt: Date
+  updatedAt: Date
 }
 
 export const columns: ColumnDef<Item>[] = [
@@ -39,38 +39,46 @@ export const columns: ColumnDef<Item>[] = [
   {
     accessorKey: "name",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Name" />
+      <DataTableColumnHeader column={column} title="Programa" />
     ),
   },
   {
-    accessorKey: "category",
+    accessorKey: "identifier",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Category" />
+      <DataTableColumnHeader column={column} title="Meu Identificador" />
     ),
   },
   {
-    accessorKey: "price",
+    accessorKey: "createdAt",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Price" />
+      <DataTableColumnHeader column={column} title="Criado em" />
     ),
-    cell: ({ row }) => {
-      const price = parseFloat(row.getValue("price"))
-      const formatted = new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD",
-      }).format(price)
-      return <div className="font-medium">{formatted}</div>
-    },
   },
   {
-    accessorKey: "stock",
+    accessorKey: "updatedAt",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Stock" />
+      <DataTableColumnHeader column={column} title="Atualizado em" />
     ),
   },
+
+
   {
     id: "actions",
     cell: ({ row }) => <DataTableRowActions row={row} />,
   },
 ]
 
+// {
+//   accessorKey: "price",
+//   header: ({ column }) => (
+//     <DataTableColumnHeader column={column} title="Price" />
+//   ),
+//   cell: ({ row }) => {
+//     const price = parseFloat(row.getValue("price"))
+//     const formatted = new Intl.NumberFormat("en-US", {
+//       style: "currency",
+//       currency: "USD",
+//     }).format(price)
+//     return <div className="font-medium">{formatted}</div>
+//   },
+// },
