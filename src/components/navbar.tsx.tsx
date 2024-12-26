@@ -10,8 +10,8 @@ export default function Navbar() {
           <div className="flex items-center space-x-4">
             <Link href="/" className="text-xl font-bold">PONTOSPRAVOCÊ</Link>
             <Link href="/" className="text-sm">Home</Link>
-            <Link href="/about" className="text-sm">About</Link>
-            <Link href="/table-management" className="text-sm">Table Management</Link>
+            <Link href="/about" className="text-sm">Sobre</Link>
+            <Link href="/loyalty-programs" className="text-sm">Programas de Pontos</Link>
           </div>
           <ThemeToggle />
         </div>

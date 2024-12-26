@@ -67,7 +67,7 @@ export function ItemForm({ initialData }: { initialData?: Item }) {
           description: "The new item has been successfully added.",
         })
       }
-      router.push("/table-management")
+      router.push("/loyalty-programs")
       router.refresh()
     } catch (error) {
       toast({

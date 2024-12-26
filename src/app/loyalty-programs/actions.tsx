@@ -34,7 +34,7 @@ export async function getItems() {
 export async function addItem(newItem: Omit<Item, "id">) {
   const item = { ...newItem, id: (items.length + 1).toString() }
   items.push(item)
-  revalidatePath("/table-management")
+  revalidatePath("/loyalty-programs")
   return item
 }
 
@@ -42,7 +42,7 @@ export async function updateItem(id: string, updatedItem: Partial<Item>) {
   const index = items.findIndex(item => item.id === id)
   if (index !== -1) {
     items[index] = { ...items[index], ...updatedItem }
-    revalidatePath("/table-management")
+    revalidatePath("/loyalty-programs")
     return items[index]
   }
   return null
@@ -52,7 +52,7 @@ export async function deleteItem(id: string) {
   const index = items.findIndex(item => item.id === id)
   if (index !== -1) {
     items.splice(index, 1)
-    revalidatePath("/table-management")
+    revalidatePath("/loyalty-programs")
     return true
   }
   return false

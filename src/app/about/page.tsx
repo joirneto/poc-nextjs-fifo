@@ -1,9 +1,9 @@
 export default function About() {
   return (
     <div className="max-w-2xl mx-auto">
-      <h1 className="text-3xl font-bold mb-4">About Our App</h1>
+      <h1 className="text-3xl font-bold mb-4">Sobre Pontos pra você</h1>
       <p className="mb-4">
-        Our modern CRUD (Create, Read, Update, Delete) application is designed to provide a seamless and intuitive interface for managing data. Built with the latest web technologies, it offers a responsive design that works great on both desktop and mobile devices.
+        Em breve novidades
       </p>
       <p className="mb-4">
         Key features include:

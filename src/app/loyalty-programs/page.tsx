@@ -12,7 +12,7 @@ export default async function TableManagement() {
       <div className="flex justify-between items-center">
         <h1 className="text-3xl font-bold">Item Management</h1>
         <Button asChild>
-          <Link href="/table-management/add">Add New Item</Link>
+          <Link href="/loyalty-programs/add">Add New Item</Link>
         </Button>
       </div>
       <DataTable columns={columns} data={data} />

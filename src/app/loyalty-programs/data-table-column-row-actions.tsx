@@ -38,7 +38,7 @@ export function DataTableRowActions<TData>({
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-[160px]">
-        <DropdownMenuItem onClick={() => router.push(`/table-management/edit/${item.id}`)}>
+        <DropdownMenuItem onClick={() => router.push(`/loyalty-programs/edit/${item.id}`)}>
           Edit
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => {
