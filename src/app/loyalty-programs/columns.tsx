@@ -7,11 +7,11 @@ import { DataTableRowActions } from "./data-table-column-row-actions"
 
 
 export type Item = {
-  id: string
+  id: number
   name: string
   identifier: string
-  createdAt: Date
-  updatedAt: Date
+  createdAt: Date|string|null
+  updatedAt: Date|string|null
 }
 
 export const columns: ColumnDef<Item>[] = [

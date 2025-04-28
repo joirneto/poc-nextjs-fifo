@@ -19,8 +19,9 @@ import {
 import { Input } from "~/components/ui/input"
 
 import { Item } from "./columns"
-import { updateItem } from "./actions"
+
 import { toast, Toaster } from "sonner"
+import { updateItem } from "./actions"
 
 
 const formSchema = z.object({
@@ -64,7 +65,7 @@ export function ItemForm({ initialData }: { initialData?: Item }) {
       router.push("/loyalty-programs")
       router.refresh()
     } catch (error) {
-
+      console.log(error)
     } finally {
       setIsLoading(false)
     }

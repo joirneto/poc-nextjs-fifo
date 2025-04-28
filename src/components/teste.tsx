@@ -58,7 +58,7 @@ export default function Home() {
     const tempHistory: { key: string; points: number; money: number }[] = [];
 
     while ((remainingPoints > 0) && newQueue.length > 0) {
-      const current = newQueue[0];
+      const current = newQueue[0] as { key: string; points: number; money: number };
       const pointsUsed = Math.min(current.points, remainingPoints);
 
       if (pointsUsed > 0) {

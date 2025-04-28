@@ -2,9 +2,10 @@ import { getItems } from "../../actions"
 import { ItemForm } from "../../item-form"
 
 
-export default async function EditItem({ params }: { params: { id: string } }) {
+export default async function EditItem({ params }: { params: Promise<{ id: number }> }) {
   const items = await getItems()
-  const item = items.find(item => item.id === params.id)
+  const {id} = await params;
+  const item = items.find(item => item.id === id)
 
   if (!item) {
     return <div>Item not found</div>

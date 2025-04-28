@@ -8,7 +8,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "~/components/ui/dropdown-menu"
@@ -42,7 +41,7 @@ export function DataTableRowActions<TData>({
           Edit
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => {
-          deleteItem(item.id)
+          deleteItem(parseInt(item.id))
           router.refresh()
         }}>
           Delete

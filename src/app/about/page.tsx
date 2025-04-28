@@ -17,7 +17,7 @@ export default function About() {
         <li>Light and dark theme support</li>
       </ul>
       <p>
-        Whether you're managing a small dataset or a large database, our app provides the tools you need to efficiently handle your data.
+        {"Whether you're managing a small dataset or a large database, our app provides the tools you need to efficiently handle your data."}
       </p>
     </div>
   )

@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { z } from 'zod';
 import { db } from '~/server/db';
 import { loyaltyProgramsTable } from '~/server/db/schema';
+import { getLoyaltyPrograms } from '~/server/loyalty-programs';
 
 // Esquema de validação com Zod
 const programSchema = z.object({
@@ -11,7 +12,7 @@ const programSchema = z.object({
 
 // GET: Listar usuários
 export async function GET() {
-  const users = await db.select().from(loyaltyProgramsTable);
+  const users = await getLoyaltyPrograms();
   return NextResponse.json(users);
 }
 

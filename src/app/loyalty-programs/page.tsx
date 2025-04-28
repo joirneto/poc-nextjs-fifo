@@ -2,11 +2,10 @@ import { DataTable } from "./data-table";
 import { columns } from "./columns";
 import Link from "next/link";
 import { Button } from "~/components/ui/button";
+import { getLoyaltyPrograms } from "~/server/loyalty-programs";
 
 async function fetchLoyaltyPrograms() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_URL_BASE}/loyalty-programs`); 
-  const data = await res.json();
-  return data;
+  return getLoyaltyPrograms();
 }
 
 export default async function TableManagement() {
