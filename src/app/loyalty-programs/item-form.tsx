@@ -20,6 +20,7 @@ import { Input } from "~/components/ui/input"
 
 import { Item } from "./columns"
 import { updateItem } from "./actions"
+import { toast, Toaster } from "sonner"
 
 
 const formSchema = z.object({
@@ -58,8 +59,8 @@ export function ItemForm({ initialData }: { initialData?: Item }) {
           },
           body: JSON.stringify(values)
         }); 
-
       }
+      toast.success('Item criado com sucesso!')
       router.push("/loyalty-programs")
       router.refresh()
     } catch (error) {
@@ -70,7 +71,8 @@ export function ItemForm({ initialData }: { initialData?: Item }) {
   }
 
   return (
-      <Form {...form}>
+      <div>
+        <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
           control={form.control}
@@ -109,6 +111,8 @@ export function ItemForm({ initialData }: { initialData?: Item }) {
         </Button>
       </form>
     </Form>
+    <Toaster richColors position="top-right" />
+      </div>
   )
 }
 
