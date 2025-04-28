@@ -52,7 +52,7 @@ export function ItemForm({ initialData }: { initialData?: Item }) {
         await updateItem(initialData.id, values)
  
       } else {
-        await fetch(`${process.env.NEXT_PUBLIC_URL_BASE}/loyalty-programs`, {
+        await fetch(`/api/loyalty-programs`, {
           method: 'POST',
           headers: {
             'Accept': 'application/json',
